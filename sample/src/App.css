@@ -1,0 +1,13 @@
+.App {
+  text-align: center;
+  background-color: #e6fffc
+
+}
+
+main { 
+  width: 100%;
+  height: 100vh;
+}
+.room-heading h1 { 
+  margin: 0;
+}
