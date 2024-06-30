@@ -43,7 +43,7 @@ export default function ResponsiveDialog({parsed}) {
 
   return (
     <React.Fragment>
-      <Button variant="outlined" startIcon={<PrintIcon />} onClick={handleClickOpen}>
+      <Button variant="outlined" fullWidth startIcon={<PrintIcon />} onClick={handleClickOpen}>
         Print
       </Button>
 

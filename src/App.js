@@ -30,6 +30,10 @@ import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import ListIcon from '@mui/icons-material/List';
 
 import ExampleCounter from './alert';
 import AlertDialogSlide from './date';
@@ -85,12 +89,19 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 
 export default function App() {
+  const theme = useTheme();
+  const isMobileQuery = useMediaQuery(theme.breakpoints.down('sm')); // or 'xs'
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(isMobileQuery);
+  }, [isMobileQuery]);
+  console.log(isMobile)
   const totalActivities = activities.rooms
   const [alignment, setAlignment] = React.useState(null);
 
   const [selectedActivities, filterActivities] = useState(activities.rooms);
 
-  const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   
   const [dateRange, setParentDates] = useState(['set', 'set']);
@@ -122,6 +133,16 @@ export default function App() {
       setAlignment(newAlignment);
     }
   };
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const openMenu = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -197,10 +218,53 @@ export default function App() {
         <ExampleCounter/>
         <Divider style={{width:'100%'}} sx={{mt:"1rem", mb:"1rem"}}/>
           <Box component="section" sx={{ display: 'flex',  justifyContent: 'space-between' }}>
-            <Typography variant="h4"  display="inline">
+            <Typography variant="h4" >
               Activity Log
             </Typography>
-            <Box sx={{ display: 'flex', gap:"0.5rem", width:"fit-content"}} display="inline">
+            {isMobile ?
+            <div>
+            <Button
+              id="basic-button"
+              aria-controls={openMenu ? 'basic-menu' : undefined}
+              aria-haspopup="true"
+              aria-expanded={openMenu ? 'true' : undefined}
+              onClick={handleClick}
+              startIcon={              <ListIcon/>              }
+            >
+              Options
+            </Button>
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={openMenu}
+              onClose={handleClose}
+              MenuListProps={{
+                'aria-labelledby': 'basic-button',
+              }}
+            >
+              <MenuItem ><AlertDialogSlide setParentDates={setParentDates}/></MenuItem>
+              <MenuItem ><ResponsiveDialog fullWidth parsed={parsedActivities}/> </MenuItem>
+              <MenuItem >              
+                <ToggleButtonGroup
+                  color="primary"
+                  value={alignment}
+                  exclusive
+                  fullWidth
+                  onChange={handleToggle}
+                  aria-label="Platform"
+                >
+                  <ToggleButton value="General">General</ToggleButton>
+                  <ToggleButton value="Rooms">Rooms</ToggleButton>
+                </ToggleButtonGroup>
+              </MenuItem>
+              <MenuItem>
+                <Button fullWidth  variant="contained" disableElevation>
+                  Reset
+                </Button>
+              </MenuItem>
+            </Menu>
+          </div>  
+            : <Box sx={{ display: 'flex', gap:"0.5rem", width:"fit-content"}} >
               <AlertDialogSlide setParentDates={setParentDates}/>
               <ResponsiveDialog parsed={parsedActivities}/>
 
@@ -217,8 +281,7 @@ export default function App() {
               <Button variant="contained" disableElevation>
                 Reset
               </Button>
-
-            </Box>
+            </Box>}
           </Box>
           {alignment === 'General' ? <CustomizedTimeline activities={totalActivities} date={dateRange} parsed={setParsed}/> : <CustomizedTimeline activities={selectedActivities} date={dateRange} parsed={setParsed}/>
         }

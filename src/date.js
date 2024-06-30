@@ -41,7 +41,7 @@ export default function AlertDialogSlide({setParentDates}) {
 
   return (
     <React.Fragment>
-      <Button variant="outlined" onClick={handleClickOpen} sx={{ display: "flex", gap: "0.3rem" }}>
+      <Button variant="outlined" fullWidth onClick={handleClickOpen} sx={{ display: "flex", gap: "0.3rem" }}>
         <CalendarMonthIcon />
         Pick Date Range
       </Button>
