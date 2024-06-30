@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/care-home/static/css/main.0c641fbc.css",
+    "main.js": "/care-home/static/js/main.54f69ece.js",
+    "static/js/453.d7172a80.chunk.js": "/care-home/static/js/453.d7172a80.chunk.js",
+    "static/media/alert-sound-87478.mp3": "/care-home/static/media/alert-sound-87478.b794de8f55ab35bb62fa.mp3",
+    "index.html": "/care-home/index.html",
+    "main.0c641fbc.css.map": "/care-home/static/css/main.0c641fbc.css.map",
+    "main.54f69ece.js.map": "/care-home/static/js/main.54f69ece.js.map",
+    "453.d7172a80.chunk.js.map": "/care-home/static/js/453.d7172a80.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0c641fbc.css",
+    "static/js/main.54f69ece.js"
+  ]
+}
