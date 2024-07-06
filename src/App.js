@@ -85,19 +85,29 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   ...theme.mixins.toolbar,
   justifyContent: 'flex-end',
 }));
-
-
+  
 
 export default function App() {
   const theme = useTheme();
   const isMobileQuery = useMediaQuery(theme.breakpoints.down('sm')); // or 'xs'
   const [isMobile, setIsMobile] = useState(false);
 
+  const targetRef = useRef(null);
+
   useEffect(() => {
     setIsMobile(isMobileQuery);
   }, [isMobileQuery]);
-  console.log(isMobile)
+
   const totalActivities = activities.rooms
+
+  let checkedRooms = {};
+  totalActivities.forEach((activity) => { 
+    checkedRooms[activity.name] = true;
+  })
+
+
+  const [checked, setChecked] = useState(checkedRooms);
+
   const [alignment, setAlignment] = React.useState(null);
 
   const [selectedActivities, filterActivities] = useState(activities.rooms);
@@ -116,17 +126,49 @@ export default function App() {
     setOpen(false);
   };
 
+  function selectAll(){
+    // Create a new object with all values set to true
+    const updatedObject = {};
+    for (let key in checked) {
+      if (checked.hasOwnProperty(key)) {
+        updatedObject[key] = true;
+      }
+    }
+    filterActivities(totalActivities);
+    setChecked(updatedObject);
+  }
 
+  function selectNone(){
+    // Create a new object with all values set to true
+    const updatedObject = {};
+    for (let key in checked) {
+      if (checked.hasOwnProperty(key)) {
+        updatedObject[key] = false;
+      }
+    }
+    filterActivities([]);
+    setChecked(updatedObject);
+  }
+  
   const handleChange = (event) => {
     totalActivities.forEach(function(room, index) {
       if (room.name == event.target.name && event.target.checked == false) { 
+        setChecked({
+          ...checked,
+          [event.target.name]: false,
+        });
         filterActivities(selectedActivities.filter(item => item.name !== room.name))
       }
-      if (room.name == event.target.name && event.target.checked == true) { 
+      if (room.name == event.target.name && event.target.checked == true) {
+        setChecked({
+          ...checked,
+          [event.target.name]: true,
+        });
         filterActivities([...selectedActivities, room]);
       }
     });
   };
+
 
   const handleToggle = (event, newAlignment) => {
     if (newAlignment !== null) {
@@ -182,7 +224,7 @@ export default function App() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <List>
+        <List ref={targetRef}>
           <ListItem className='room-heading' sx={{display:"flex", gap:"0.5rem"}}>
             <HomeIcon fontSize='large'/>
             <h1>Rooms</h1>
@@ -190,7 +232,7 @@ export default function App() {
           {totalActivities.map(function(data) {
           return (
             <ListItem disablePadding>
-                <Checkbox name={data.name} defaultChecked onChange={handleChange}/>
+                <Checkbox name={data.name} checked={checked[data.name]} onChange={handleChange}/>
                 <ListItemText primary={data.name} />
             </ListItem>
             )
@@ -198,16 +240,22 @@ export default function App() {
         </List>
         <Divider />
         <List>
-          {['Select All', 'Select None'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
+            <ListItem key='Select All' disablePadding>
+              <ListItemButton onClick={selectAll}>
                 <ListItemIcon>
-                  {index % 2 === 0 ? <DoneAllIcon /> : <RemoveDoneIcon />}
+                  <DoneAllIcon />
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <ListItemText primary='Select All'/>
               </ListItemButton>
             </ListItem>
-          ))}
+            <ListItem key='Select None' disablePadding>
+              <ListItemButton onClick={selectNone}>
+                <ListItemIcon>
+                  <RemoveDoneIcon/>
+                </ListItemIcon>
+                <ListItemText primary='Select None'/>
+              </ListItemButton>
+            </ListItem>
         </List>
       </Drawer>
       <Main open={open}>
