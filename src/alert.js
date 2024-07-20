@@ -49,7 +49,6 @@ export default function ExampleCounter() {
                 No event at the moment.
                 <Button
                     onClick={() => {
-
                         changeAlert();
                     }}
                     >

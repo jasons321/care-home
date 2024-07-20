@@ -3,6 +3,9 @@
 import * as React from 'react';
 import './App.css';
 import activities from './assets/activities.json';
+//import logo from './assets/IMG_4704.PNG';
+//import logo from './assets/IMG_4686.jpeg';
+import logo from './assets/logo.png';
 import { useState, useEffect, useRef } from 'react';
 
 import CustomizedTimeline from './timeline';
@@ -105,7 +108,6 @@ export default function App() {
     checkedRooms[activity.name] = true;
   })
 
-
   const [checked, setChecked] = useState(checkedRooms);
 
   const [alignment, setAlignment] = React.useState(null);
@@ -189,10 +191,10 @@ export default function App() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar sx={{backgroundColor: "#bbdefb"}} position="fixed" open={open}>
         <Toolbar>
           <IconButton
-            color="inherit"
+            color="black"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
@@ -200,9 +202,7 @@ export default function App() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Main Dashboard
-          </Typography>
+          <img id="logo" src={logo}/>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -227,7 +227,7 @@ export default function App() {
         <List ref={targetRef}>
           <ListItem className='room-heading' sx={{display:"flex", gap:"0.5rem"}}>
             <HomeIcon fontSize='large'/>
-            <h1>Rooms</h1>
+            <h2>Rooms</h2>
           </ListItem>
           {totalActivities.map(function(data) {
           return (
