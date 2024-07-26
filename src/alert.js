@@ -12,28 +12,42 @@ import IconButton from '@mui/material/IconButton';
 
 export default function ExampleCounter() {
     const [isVisible, setIsVisible] = useState(false);
-    const [played, setIsPlayed] = useState(false);
     const [isMuted, setIsMuted] = useState(true);
+    const [time, setTime] = useState(5);
 
     const toggleMuted = () => {
         setIsMuted(prevState => !prevState);
     }
 
-    const setAlert = () => {
-        setIsVisible(false);
+    const toggleAlert = () => {
+        setIsVisible(prevState => !prevState);
     }
-    const changeAlert = () => {
-        setIsVisible(true);
-        callAlert();
-    }
+
+
     const callAlert = () => {
         if (!isMuted) { 
-            new Audio(sound).play()
-
+            new Audio(sound).play();
         }
 
     }
-    
+
+    useEffect(() => {
+        let interval;
+        if (!isVisible) {
+            interval = setInterval(() => {
+                setTime((time) => time - 1);
+            }, 1000)
+
+            if (time == 0) {
+                callAlert();
+                setIsVisible(true);
+                clearInterval(interval);
+                setTime(5);
+            }
+        }
+        return () => clearInterval(interval);
+    }, [isVisible, time]);
+
     useEffect(() => {
         // Call the fetchDataOnLoad function when component mounts#
         callAlert();
@@ -47,13 +61,6 @@ export default function ExampleCounter() {
             <Alert severity="info" sx={{position:"relative"}}>
             <AlertTitle>Info</AlertTitle>
                 No event at the moment.
-                <Button
-                    onClick={() => {
-                        changeAlert();
-                    }}
-                    >
-                    create alert
-                </Button>
                 <IconButton 
                 isMuted={isMuted}
                 onClick={() => {
@@ -73,7 +80,7 @@ export default function ExampleCounter() {
             This is an error Alert with a scary title.
             <Button
             onClick={() => {
-                setAlert();
+                toggleAlert();
             }}
             >
             Click me
