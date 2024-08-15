@@ -79,8 +79,10 @@ export default function CustomizedTimeline({activities, date, parsed}) {
   const totalDates = getAllDates(activities);
   const [sortedTimeline, setTimeline] = useState([]);
   const [allDates, setDates] = useState(getAllDates(activities));
-  parsed(sortedTimeline);
+  useEffect(() => {
+    parsed(sortedTimeline);
 
+  }, []);
   useEffect(() => {
     setTimeline(getSorted(allDates, activities));
     // Perform actions based on prop changes
