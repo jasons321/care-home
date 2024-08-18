@@ -56,7 +56,7 @@ export default function ExampleCounter() {
   return (
 
 
-    <Box >
+    <Box sx={{marginBottom:'20px'}}>
         {!isVisible && (
             <Alert severity="info" sx={{position:"relative"}}>
             <AlertTitle>Info</AlertTitle>

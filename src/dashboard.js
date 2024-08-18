@@ -273,7 +273,7 @@ export default function App() {
         <Typography sx={{mb:"1rem"}} variant="h4" noWrap component="div">
           Update
         </Typography>
-        <ExampleCounter/>
+        {Array.from({ length: 3 }, (_, i) => <ExampleCounter/>)}
         <Divider style={{width:'100%'}} sx={{mt:"1rem", mb:"1rem"}}/>
           <Box component="section" sx={{ display: 'flex',  justifyContent: 'space-between' }}>
             <Typography variant="h4" >

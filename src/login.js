@@ -32,11 +32,11 @@ export default function Login() {
         var password = data.get('password');
 
         for (var user of users) {
-            if (user.email == email && user.password == password) {
+            if (user.username == email && user.password == password) {
                 navigate("/dashboard");
             }
             else {
-                console.log("error");
+              console.log("error")
             }
         }
     };
