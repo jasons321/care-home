@@ -9,6 +9,7 @@ function App() {
       <Routes>
         <Route path="/care-home" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
+
       </Routes>
     </BrowserRouter>
 

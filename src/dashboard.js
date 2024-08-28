@@ -3,8 +3,7 @@
 import * as React from 'react';
 import './App.css';
 import activities from './assets/activities.json';
-//import logo from './assets/IMG_4704.PNG';
-//import logo from './assets/IMG_4686.jpeg';
+
 import logo from './assets/logo.png';
 import { useState, useEffect, useRef } from 'react';
 
@@ -37,20 +36,13 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListIcon from '@mui/icons-material/List';
+import CameraIndoorIcon from '@mui/icons-material/CameraIndoor';
+import HolidayVillageIcon from '@mui/icons-material/HolidayVillage';
 
 import ExampleCounter from './alert';
 import AlertDialogSlide from './date';
 import ResponsiveDialog from './print';
 import io from 'socket.io-client';
-
-
-// client-side
-const socket = io("http://ec2-51-20-2-26.eu-north-1.compute.amazonaws.com:5000");
-socket.on('data_update', (data) => {
-    console.log("sdf");
-    console.log(data);
-    // Handle the real-time data here
-});
 
 const drawerWidth = 240;
 
@@ -98,27 +90,76 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   ...theme.mixins.toolbar,
   justifyContent: 'flex-end',
 }));
-  
 
 export default function App() {
   const theme = useTheme();
-  const isMobileQuery = useMediaQuery(theme.breakpoints.down('sm')); // or 'xs'
+  const isMobileQuery = useMediaQuery(theme.breakpoints.down('sm')); 
   const [isMobile, setIsMobile] = useState(false);
+  const [totalActivities, setTotal] = useState(activities.rooms);
 
+
+  const [checked, setChecked] = useState(() => {
+    let checkedRooms = {};
+    totalActivities.forEach((activity) => { 
+      checkedRooms[activity.name] = false;
+      });
+    return checkedRooms;
+  });
+  let checkedRef = useRef(checked);
   const targetRef = useRef(null);
 
   useEffect(() => {
     setIsMobile(isMobileQuery);
   }, [isMobileQuery]);
 
-  const totalActivities = activities.rooms
+  const selectNone = () =>{
+    // Create a new object with all values set to true
+    const updatedObject = {};
+    for (let key in checked) {
+      if (checked.hasOwnProperty(key)) {
+        updatedObject[key] = false;
+      }
+    }
+    filterActivities([]);
+    setChecked(updatedObject);
+    checkedRef.current = updatedObject;
+  }
 
-  let checkedRooms = {};
-  totalActivities.forEach((activity) => { 
-    checkedRooms[activity.name] = true;
-  })
+  useEffect(() => {
+    selectNone();
+  }, []);
 
-  const [checked, setChecked] = useState(checkedRooms);
+  useEffect(() => {
+      var tempActivities = []
+      totalActivities.forEach((activity) => { 
+        if(checked[activity.name] == true) {
+          tempActivities.push(activity);
+        }
+      })
+      filterActivities(tempActivities);
+  }, []);
+
+  const handleChange = (event) => {
+    totalActivities.forEach(function(room, index) {
+      if (room.name == event.target.name && event.target.checked == false) { 
+        setChecked((checked) => ({
+          ...checked,
+          [room.name]: false,
+        }));
+        checkedRef.current = checked;
+        filterActivities(selectedActivities.filter(item => item.name !== room.name))
+      }
+      if (room.name == event.target.name && event.target.checked == true) {
+        setChecked((checked) => ({
+          ...checked,
+          [room.name]: true,
+        }));
+        checkedRef.current = checked;
+
+        filterActivities([...selectedActivities, room]);
+      }
+    });
+  };
 
   const [alignment, setAlignment] = React.useState(null);
 
@@ -129,6 +170,44 @@ export default function App() {
   const [dateRange, setParentDates] = useState(['set', 'set']);
   
   const [parsedActivities, setParsed] = useState([]);
+  
+  const [warningMessages, setWarnings] = useState(['dfg', 'df', 'SDF', 'SDF']);
+
+  useEffect(() => {
+    const socket = io("http://ec2-51-20-2-26.eu-north-1.compute.amazonaws.com:5000/");
+    socket.on('data_update', (data) => {
+        console.log(data)
+        if (data.type == "activity") {
+          var tempActivities = totalActivities;
+
+          tempActivities.forEach((activity, index) => {
+            var room = "Room " + data.room;
+            if (activity.name == room) {
+              tempActivities[index].activities.push({date: '2024-07-01', time: data.time, activities: data.message})
+            }
+          });
+          setTotal(tempActivities);
+
+          var tempSelected = []
+ 
+          let checked = checkedRef.current;
+          totalActivities.forEach((activity) => { 
+          if(checked[activity.name] == true) {
+              tempSelected.push(activity);
+            }
+          })
+          filterActivities(tempSelected);
+        }
+        if (data.type == "warning") {
+          var tempWarnings = warningMessages; 
+          tempWarnings.push(data.message);
+          setWarnings(tempWarnings);
+        }
+    });
+    return () => {
+      socket.close();
+    };
+  }, []);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -148,39 +227,9 @@ export default function App() {
     }
     filterActivities(totalActivities);
     setChecked(updatedObject);
-  }
+    checkedRef.current = updatedObject;
 
-  function selectNone(){
-    // Create a new object with all values set to true
-    const updatedObject = {};
-    for (let key in checked) {
-      if (checked.hasOwnProperty(key)) {
-        updatedObject[key] = false;
-      }
-    }
-    filterActivities([]);
-    setChecked(updatedObject);
   }
-  
-  const handleChange = (event) => {
-    totalActivities.forEach(function(room, index) {
-      if (room.name == event.target.name && event.target.checked == false) { 
-        setChecked({
-          ...checked,
-          [event.target.name]: false,
-        });
-        filterActivities(selectedActivities.filter(item => item.name !== room.name))
-      }
-      if (room.name == event.target.name && event.target.checked == true) {
-        setChecked({
-          ...checked,
-          [event.target.name]: true,
-        });
-        filterActivities([...selectedActivities, room]);
-      }
-    });
-  };
-
 
   const handleToggle = (event, newAlignment) => {
     if (newAlignment !== null) {
@@ -196,7 +245,7 @@ export default function App() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+  
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -236,16 +285,45 @@ export default function App() {
         <Divider />
         <List ref={targetRef}>
           <ListItem className='room-heading' sx={{display:"flex", gap:"0.5rem"}}>
-            <HomeIcon fontSize='large'/>
+            <HolidayVillageIcon fontSize='large'/>
             <h2>Rooms</h2>
           </ListItem>
           {totalActivities.map(function(data) {
-          return (
-            <ListItem disablePadding>
-                <Checkbox name={data.name} checked={checked[data.name]} onChange={handleChange}/>
-                <ListItemText primary={data.name} />
-            </ListItem>
-            )
+            if (data.type == "Room") {
+              return (
+                <ListItem key={data.name}>
+                    <Checkbox sx={{paddingLeft:"0"}}name={data.name} checked={checked[data.name]} onChange={handleChange}/>
+                    <ListItemText primary={data.name} />
+                    {data.camera ?                 
+                      <IconButton  href={data.camera} aria-label="delete">
+                        <CameraIndoorIcon />
+                      </IconButton> :<></>
+                    }
+                </ListItem>
+              )
+            }
+          })}
+        </List>
+        <Divider />
+        <Divider />
+        <List ref={targetRef}>
+          <ListItem className='room-heading' sx={{display:"flex", gap:"0.5rem"}}>
+            <HomeIcon fontSize='large'/>
+            <h2>General</h2>
+          </ListItem>
+          {totalActivities.map(function(data) {
+            if (data.type == "General") {
+              return (
+                <ListItem key={data.name}>
+                    <ListItemText primary={data.name} />
+                    {data.camera ?                 
+                      <IconButton  href={data.camera} aria-label="delete">
+                        <CameraIndoorIcon />
+                      </IconButton> :<></>
+                    }
+                </ListItem>
+              )
+            }
           })}
         </List>
         <Divider />
@@ -273,7 +351,7 @@ export default function App() {
         <Typography sx={{mb:"1rem"}} variant="h4" noWrap component="div">
           Update
         </Typography>
-        {Array.from({ length: 3 }, (_, i) => <ExampleCounter/>)}
+        <ExampleCounter warningMessages={warningMessages} setWarnings={setWarnings}/>
         <Divider style={{width:'100%'}} sx={{mt:"1rem", mb:"1rem"}}/>
           <Box component="section" sx={{ display: 'flex',  justifyContent: 'space-between' }}>
             <Typography variant="h4" >
@@ -287,7 +365,7 @@ export default function App() {
               aria-haspopup="true"
               aria-expanded={openMenu ? 'true' : undefined}
               onClick={handleClick}
-              startIcon={              <ListIcon/>              }
+              startIcon={ <ListIcon/> }
             >
               Options
             </Button>
@@ -325,7 +403,6 @@ export default function App() {
             : <Box sx={{ display: 'flex', gap:"0.5rem", width:"fit-content"}} >
               <AlertDialogSlide setParentDates={setParentDates}/>
               <ResponsiveDialog parsed={parsedActivities}/>
-
               <ToggleButtonGroup
                 color="primary"
                 value={alignment}
@@ -344,7 +421,7 @@ export default function App() {
           {alignment === 'General' ? <CustomizedTimeline activities={totalActivities} date={dateRange} parsed={setParsed}/> : <CustomizedTimeline activities={selectedActivities} date={dateRange} parsed={setParsed}/>
         }
 
-          </Main>
+        </Main>
     </Box>
   );
 }

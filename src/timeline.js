@@ -33,12 +33,14 @@ function sortDates(dateArray) {
 const getAllDates = (activities) => {
   var dates = [];
   activities.forEach((element) => {
-    var timeline = element.activities;
-    var newDates = [];
-    timeline.forEach((object) => {
-      newDates.push(object.date);
-    });
-    dates = dates.concat(newDates);
+    if (element.type == "Room") {
+      var timeline = element.activities;
+      var newDates = [];
+      timeline.forEach((object) => {
+        newDates.push(object.date);
+      });
+      dates = dates.concat(newDates);
+    }
   });
 
   return sortDates([...new Set(dates)]);
@@ -50,13 +52,15 @@ const getSorted = (dates, passedActivities) => {
   var count = 1;
   dates.forEach((element) => {
     passedActivities.forEach((activities) => {
-      var timeline = activities.activities
-      timeline.forEach((object) => {
-        if (object.date === element) { 
-          sorted.push({"id":count, "room": activities.name, "date": element, "time":object.time, "activities":object.activities});
-          count++;
-        }
-      });
+      if (activities.type == "Room") {
+        var timeline = activities.activities
+        timeline.forEach((object) => {
+          if (object.date === element) { 
+            sorted.push({"id":count, "room": activities.name, "date": element, "time":object.time, "activities":object.activities});
+            count++;
+          }
+        });
+      }
     });
   });
   sorted.sort((a, b) => {
@@ -69,7 +73,6 @@ const getSorted = (dates, passedActivities) => {
     // If dates are the same, compare times
     return a.time.localeCompare(b.time);
   });
-
   return sorted;
 };
 
@@ -82,7 +85,8 @@ export default function CustomizedTimeline({activities, date, parsed}) {
   useEffect(() => {
     parsed(sortedTimeline);
 
-  }, []);
+  }, [sortedTimeline]);
+
   useEffect(() => {
     setTimeline(getSorted(allDates, activities));
     // Perform actions based on prop changes
@@ -110,16 +114,15 @@ export default function CustomizedTimeline({activities, date, parsed}) {
     }
   }, [date]); // Only re-run the effect if props.someProp changes
   return (
-    <Timeline sx={{bgcolor:"#f6f7f7"}}>
-      {allDates.map(function(data) {
+    <Timeline sx={{bgcolor:"#f6f7f7", maxBlockSize: "300px"}}>
+      {allDates.map(function(data, index) {
           return (
-            <Box>
+            <Box key={index}>
             <Divider>{data}</Divider>
-            {sortedTimeline.map(function(timeline) {
+            {sortedTimeline.map(function(timeline, index) {
               if (timeline.date === data) { 
                 return (
-                  
-                  <TimelineItem>
+                  <TimelineItem key={index}>
                   <TimelineOppositeContent
                     sx={{ m: 'auto 0', flex:"0.1" }}
                     align="right"

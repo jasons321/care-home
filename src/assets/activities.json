@@ -2,174 +2,90 @@
     "rooms": [
       {
         "name": "Room 1",
+        "type" : "Room",
+        "camera" : "http://51.20.2.26:8000/",
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "01:09", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "01:10", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "08:11", "activities": "Movement detected by door sensor" },
-          { "date": "2024-07-01", "time": "22:37", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:56", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:58", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "08:24", "activities": "Movement detected by door sensor" }
+          { "date": "2024-07-01", "time": "01:10", "activities": "Resident entering bathroom" } 
         ]
       },
       {
         "name": "Room 2",
+        "type" : "Room",
+        "camera" : "http://51.20.2.26:8000/",
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "01:09", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "01:10", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "08:11", "activities": "Movement detected by door sensor" },
-          { "date": "2024-07-01", "time": "22:37", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:56", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:58", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "08:24", "activities": "Movement detected by door sensor" }
+          { "date": "2024-07-01", "time": "01:16", "activities": "Resident leaving bathroom" }
         ]
       },
       {
         "name": "Room 3",
+        "camera" : "",
+        "type" : "Room",
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "01:09", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "01:10", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "08:11", "activities": "Movement detected by door sensor" },
-          { "date": "2024-07-01", "time": "22:37", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:56", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:58", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "08:24", "activities": "Movement detected by door sensor" }
+          { "date": "2024-07-01", "time": "01:16", "activities": "Resident leaving bathroom" }
         ]
       },
       {
         "name": "Room 4",
+        "type" : "Room",
+        "camera" : "",
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "01:09", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "01:10", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "08:11", "activities": "Movement detected by door sensor" },
-          { "date": "2024-07-01", "time": "22:37", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:56", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:58", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "08:24", "activities": "Movement detected by door sensor" }
+          { "date": "2024-07-01", "time": "01:16", "activities": "Resident leaving bathroom" }
         ]
       },
       {
         "name": "Room 5",
+        "type" : "Room",
+        "camera" : "",
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "01:09", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "01:10", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "08:11", "activities": "Movement detected by door sensor" },
-          { "date": "2024-07-01", "time": "22:37", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:56", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:58", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "08:24", "activities": "Movement detected by door sensor" }
+          { "date": "2024-07-01", "time": "01:10", "activities": "Resident entering bathroom" }
         ]
       },
       {
         "name": "Room 6",
+        "type" : "Room",
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "01:09", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "01:10", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "08:11", "activities": "Movement detected by door sensor" },
-          { "date": "2024-07-01", "time": "22:37", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:56", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:58", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "08:24", "activities": "Movement detected by door sensor" }
+          { "date": "2024-07-01", "time": "01:10", "activities": "Resident entering bathroom" }
         ]
       },
       {
         "name": "Room 7",
+        "type" : "Room",
+        "camera" : "http://51.20.2.26:8000/",
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "01:09", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "01:10", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "08:11", "activities": "Movement detected by door sensor" },
-          { "date": "2024-07-01", "time": "22:37", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:56", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:58", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "08:24", "activities": "Movement detected by door sensor" }
+          { "date": "2024-07-01", "time": "01:10", "activities": "Resident entering bathroom" }
         ]
       },
       {
         "name": "Room 8",
+        "type" : "Room",
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "01:09", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "01:10", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "08:11", "activities": "Movement detected by door sensor" },
-          { "date": "2024-07-01", "time": "22:37", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:56", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:58", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "08:24", "activities": "Movement detected by door sensor" }
+          { "date": "2024-07-01", "time": "01:16", "activities": "Resident leaving bathroom" }
         ]
       },
       {
         "name": "Room 9",
+        "type" : "Room",
+        "camera" : "http://51.20.2.26:8000/",
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "01:09", "activities": "Movement detected by bedside sensor" },
@@ -177,20 +93,12 @@
           { "date": "2024-07-01", "time": "01:16", "activities": "Resident leaving bathroom" },
           { "date": "2024-07-01", "time": "01:16", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "07:44", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "08:11", "activities": "Movement detected by door sensor" },
-          { "date": "2024-07-01", "time": "22:37", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:56", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:58", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "08:24", "activities": "Movement detected by door sensor" }
+          { "date": "2024-07-01", "time": "07:44", "activities": "Resident entering bathroom" }
         ]
       },
       {
         "name": "Room 10",
+        "type" : "Room",
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "01:09", "activities": "Movement detected by bedside sensor" },
@@ -199,19 +107,13 @@
           { "date": "2024-07-01", "time": "01:16", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "07:44", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "07:44", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "08:11", "activities": "Movement detected by door sensor" },
-          { "date": "2024-07-01", "time": "22:37", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:56", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:58", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "08:24", "activities": "Movement detected by door sensor" }
+          { "date": "2024-07-01", "time": "08:08", "activities": "Resident leaving bathroom" }
         ]
       },
       {
         "name": "Room 11",
+        "type" : "Room",
+        "camera" : "http://51.20.2.26:8000/",
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "01:09", "activities": "Movement detected by bedside sensor" },
@@ -219,41 +121,24 @@
           { "date": "2024-07-01", "time": "01:16", "activities": "Resident leaving bathroom" },
           { "date": "2024-07-01", "time": "01:16", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "07:44", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "08:11", "activities": "Movement detected by door sensor" },
-          { "date": "2024-07-01", "time": "22:37", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:56", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:58", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "08:24", "activities": "Movement detected by door sensor" }
+          { "date": "2024-07-01", "time": "07:44", "activities": "Resident entering bathroom" }
         ]
       },
       {
         "name": "Room 12",
+        "camera": "",
+        "type" : "Room",
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "01:09", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "01:10", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "08:11", "activities": "Movement detected by door sensor" },
-          { "date": "2024-07-01", "time": "22:37", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:56", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:58", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "08:24", "activities": "Movement detected by door sensor" }
+          { "date": "2024-07-01", "time": "01:16", "activities": "Resident leaving bathroom" }
         ]
       },
       {
         "name": "Room 13",
+        "camera": "",
+        "type" : "Room",
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "01:09", "activities": "Movement detected by bedside sensor" },
@@ -262,163 +147,51 @@
           { "date": "2024-07-01", "time": "01:16", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "07:44", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "07:44", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "08:11", "activities": "Movement detected by door sensor" },
-          { "date": "2024-07-01", "time": "22:37", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:56", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:58", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "08:24", "activities": "Movement detected by door sensor" }
+          { "date": "2024-07-01", "time": "08:08", "activities": "Resident leaving bathroom" }
         ]
       },
       {
         "name": "Room 14",
+        "camera": "",
+        "type" : "Room",
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "01:09", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "01:10", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "08:11", "activities": "Movement detected by door sensor" },
-          { "date": "2024-07-01", "time": "22:37", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:56", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:58", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "08:24", "activities": "Movement detected by door sensor" }
+          { "date": "2024-07-01", "time": "01:16", "activities": "Resident leaving bathroom" }
         ]
       },
       {
         "name": "Room 15",
+        "camera": "",
+        "type" : "Room",
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "01:09", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "01:10", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "08:11", "activities": "Movement detected by door sensor" },
-          { "date": "2024-07-01", "time": "22:37", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:56", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:58", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "08:24", "activities": "Movement detected by door sensor" }
+          { "date": "2024-07-01", "time": "01:16", "activities": "Resident leaving bathroom" }
         ]
       },
       {
         "name": "Room 16",
+        "camera": "",
+        "type" : "Room",
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "01:09", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "01:10", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "08:11", "activities": "Movement detected by door sensor" },
-          { "date": "2024-07-01", "time": "22:37", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:56", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:58", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "08:24", "activities": "Movement detected by door sensor" }
+          { "date": "2024-07-01", "time": "01:16", "activities": "Resident leaving bathroom" }
         ]
       },
       {
-        "name": "Room 17",
-        "activities": [
-          { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "01:09", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "01:10", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "08:11", "activities": "Movement detected by door sensor" },
-          { "date": "2024-07-01", "time": "22:37", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:56", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:58", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "08:24", "activities": "Movement detected by door sensor" }
-        ]
+        "name": "Reception",
+        "camera": "http://51.20.2.26:8000/",
+        "type" : "General"
       },
       {
-        "name": "Room 18",
-        "activities": [
-          { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "01:09", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "01:10", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "08:11", "activities": "Movement detected by door sensor" },
-          { "date": "2024-07-01", "time": "22:37", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:56", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:58", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "08:24", "activities": "Movement detected by door sensor" }
-        ]
-      },
-      {
-        "name": "Room 19",
-        "activities": [
-          { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "01:09", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "01:10", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "08:11", "activities": "Movement detected by door sensor" },
-          { "date": "2024-07-01", "time": "22:37", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:56", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:58", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "08:24", "activities": "Movement detected by door sensor" }
-        ]
-      },
-      {
-        "name": "Room 20",
-        "activities": [
-          { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "01:09", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "01:10", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "01:16", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "07:44", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-01", "time": "08:08", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-01", "time": "08:11", "activities": "Movement detected by door sensor" },
-          { "date": "2024-07-01", "time": "22:37", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:56", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "07:58", "activities": "Resident entering bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Resident leaving bathroom" },
-          { "date": "2024-07-02", "time": "08:09", "activities": "Movement detected by bedside sensor" },
-          { "date": "2024-07-02", "time": "08:24", "activities": "Movement detected by door sensor" }
-        ]
+        "name": "Lobby",
+        "camera": "http://51.20.2.26:8000/",
+        "type" : "General"
       }
     ]
   }

@@ -19,13 +19,22 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "browserify-zlib": "^0.2.0",
+    "dompurify": "^3.1.6",
+    "jsdom": "^25.0.0",
+    "net": "^1.0.2",
+    "os": "^0.1.2",
+    "os-browserify": "^0.3.0",
+    "process": "^0.11.10",
     "react": "^18.3.1",
     "react-date-range": "^2.0.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.1",
     "react-scripts": "5.0.1",
     "socket.io-client": "^4.7.5",
+    "stream-http": "^3.2.0",
     "styled-components": "^6.1.11",
+    "tls": "^0.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -55,6 +64,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.1.1"
+    "gh-pages": "^6.1.1",
+    "react-error-overlay": "^6.0.9"
   }
 }
