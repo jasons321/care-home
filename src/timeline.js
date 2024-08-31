@@ -42,7 +42,6 @@ const getAllDates = (activities) => {
       dates = dates.concat(newDates);
     }
   });
-
   return sortDates([...new Set(dates)]);
 };
 
@@ -76,27 +75,21 @@ const getSorted = (dates, passedActivities) => {
   return sorted;
 };
 
-
-
 export default function CustomizedTimeline({activities, date, parsed}) {
-  const totalDates = getAllDates(activities);
   const [sortedTimeline, setTimeline] = useState([]);
   const [allDates, setDates] = useState(getAllDates(activities));
   useEffect(() => {
     parsed(sortedTimeline);
-
   }, [sortedTimeline]);
 
-  useEffect(() => {
-    setTimeline(getSorted(allDates, activities));
-    // Perform actions based on prop changes
-  }, [activities]); // Only re-run the effect if props.someProp changes
 
   useEffect(() => {
+    let newDates = getAllDates(activities);
     setDates(getAllDates(activities));
+
     if (date[0] != 'set') {
       var newSortedDates = [];
-      totalDates.forEach((element) => {
+      newDates.forEach((element) => {
         var currentDate = new Date(element);
         var startDate = new Date(date[0].startDate);
         var endDate = new Date(date[0].endDate);
@@ -108,11 +101,16 @@ export default function CustomizedTimeline({activities, date, parsed}) {
           newSortedDates.push(element);
         }
       });
-      
       setDates(sortDates(newSortedDates));
       setTimeline(getSorted(newSortedDates, activities));
     }
-  }, [date]); // Only re-run the effect if props.someProp changes
+    else {
+      setDates(sortDates(newDates));
+      setTimeline(getSorted(newDates, activities));
+    }
+    
+  }, [date, activities]); // Only re-run the effect if props.someProp changes
+
   return (
     <Timeline sx={{bgcolor:"#f6f7f7", maxHeight: "300px", overflowY:"scroll"}}>
       {allDates.map(function(data, index) {

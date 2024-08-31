@@ -142,19 +142,22 @@ export default function App() {
   const handleChange = (event) => {
     totalActivities.forEach(function(room, index) {
       if (room.name == event.target.name && event.target.checked == false) { 
-        setChecked({
+        var newChecked = {
           ...checked,
           [event.target.name]: false,
-        });
-        checkedRef.current = checked;
+        };
+        setChecked(newChecked);
+        checkedRef.current = newChecked;
+
         filterActivities(selectedActivities.filter(item => item.name !== room.name))
       }
       if (room.name == event.target.name && event.target.checked == true) {
-        setChecked({
+        var newChecked = {
           ...checked,
           [event.target.name]: true,
-        });
-        checkedRef.current = checked;
+        };
+        setChecked(newChecked);
+        checkedRef.current = newChecked;
 
         filterActivities([...selectedActivities, room]);
       }
@@ -179,25 +182,34 @@ export default function App() {
   useEffect(() => {
     const socket = io("https://kcsaws.co.uk/");
     socket.on('data_update', (data) => {
+      console.log(data)
+
         if (data.type == "activity") {
+
           var tempActivities = totalActivities;
           tempActivities.forEach((activity, index) => {
             var room = "Room " + data.room;
             if (activity.name == room) {
-              tempActivities[index].activities.push({date: '2024-07-01', time: data.time, activities: data.message})
+              tempActivities[index].activities.push({date: data.date, time: data.time, activities: data.message})
             }
           });
           setTotal(tempActivities);
 
           var tempSelected = [] ;
  
+
           let checked = checkedRef.current;
-          totalActivities.forEach((activity) => {    
-          if(checked[activity.name] == true) {
-              tempSelected.push(activity);
+          console.log(checked)
+          totalActivities.forEach((activity) => {   
+            if(checked[activity.name] == true) {
+                tempSelected.push(activity);
             }
           })
+          console.log(tempSelected)
+
           filterActivities(tempSelected);
+          console.log(selectedActivities)
+
         }
         if (data.type == "warning") {
           var tempWarnings = warningRef.current; 
