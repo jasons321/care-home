@@ -114,7 +114,7 @@ export default function CustomizedTimeline({activities, date, parsed}) {
     }
   }, [date]); // Only re-run the effect if props.someProp changes
   return (
-    <Timeline sx={{bgcolor:"#f6f7f7", maxBlockSize: "300px"}}>
+    <Timeline sx={{bgcolor:"#f6f7f7", maxHeight: "300px", overflowY:"scroll"}}>
       {allDates.map(function(data, index) {
           return (
             <Box key={index}>

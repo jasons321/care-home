@@ -10,7 +10,7 @@ import IconButton from '@mui/material/IconButton';
 
 
 
-export default function ExampleCounter({warningMessages, index, setWarnings, allMessages}) {
+export default function ExampleCounter({warningMessages, index, setWarnings, allMessages, warningRef}) {
     const [isMuted, setIsMuted] = useState(true);
 
     const toggleMuted = () => {
@@ -18,8 +18,9 @@ export default function ExampleCounter({warningMessages, index, setWarnings, all
     }
 
     const closeBox = () => {
-        const updatedMessages = allMessages.filter((_, i) => i !== index);
+        const updatedMessages = warningRef.current.filter((_, i) => i !== index);
         setWarnings(updatedMessages);
+        warningRef.current = updatedMessages;
     }
 
 

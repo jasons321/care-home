@@ -142,18 +142,18 @@ export default function App() {
   const handleChange = (event) => {
     totalActivities.forEach(function(room, index) {
       if (room.name == event.target.name && event.target.checked == false) { 
-        setChecked((checked) => ({
+        setChecked({
           ...checked,
-          [room.name]: false,
-        }));
+          [event.target.name]: false,
+        });
         checkedRef.current = checked;
         filterActivities(selectedActivities.filter(item => item.name !== room.name))
       }
       if (room.name == event.target.name && event.target.checked == true) {
-        setChecked((checked) => ({
+        setChecked({
           ...checked,
-          [room.name]: true,
-        }));
+          [event.target.name]: true,
+        });
         checkedRef.current = checked;
 
         filterActivities([...selectedActivities, room]);
@@ -171,15 +171,16 @@ export default function App() {
   
   const [parsedActivities, setParsed] = useState([]);
   
-  const [warningMessages, setWarnings] = useState(['dfg', 'df', 'SDF', 'SDF']);
+  const [warningMessages, setWarnings] = useState([]);
+  let warningRef = useRef(warningMessages);
+
+
 
   useEffect(() => {
-    const socket = io("http://ec2-51-20-2-26.eu-north-1.compute.amazonaws.com:5000/");
+    const socket = io("https://kcsaws.co.uk/");
     socket.on('data_update', (data) => {
-        console.log(data)
         if (data.type == "activity") {
           var tempActivities = totalActivities;
-
           tempActivities.forEach((activity, index) => {
             var room = "Room " + data.room;
             if (activity.name == room) {
@@ -188,10 +189,10 @@ export default function App() {
           });
           setTotal(tempActivities);
 
-          var tempSelected = []
+          var tempSelected = [] ;
  
           let checked = checkedRef.current;
-          totalActivities.forEach((activity) => { 
+          totalActivities.forEach((activity) => {    
           if(checked[activity.name] == true) {
               tempSelected.push(activity);
             }
@@ -199,9 +200,11 @@ export default function App() {
           filterActivities(tempSelected);
         }
         if (data.type == "warning") {
-          var tempWarnings = warningMessages; 
-          tempWarnings.push(data.message);
+          var tempWarnings = warningRef.current; 
+          var string = data.message + " Room " + data.room
+          tempWarnings.push(string);
           setWarnings(tempWarnings);
+          warningRef.current = tempWarnings;
         }
     });
     return () => {
@@ -351,7 +354,7 @@ export default function App() {
         <Typography sx={{mb:"1rem"}} variant="h4" noWrap component="div">
           Update
         </Typography>
-        <ExampleCounter warningMessages={warningMessages} setWarnings={setWarnings}/>
+        <ExampleCounter warningMessages={warningMessages} warningRef={warningRef} setWarnings={setWarnings}/>
         <Divider style={{width:'100%'}} sx={{mt:"1rem", mb:"1rem"}}/>
           <Box component="section" sx={{ display: 'flex',  justifyContent: 'space-between' }}>
             <Typography variant="h4" >
