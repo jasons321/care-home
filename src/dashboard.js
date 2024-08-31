@@ -40,6 +40,7 @@ import CameraIndoorIcon from '@mui/icons-material/CameraIndoor';
 import HolidayVillageIcon from '@mui/icons-material/HolidayVillage';
 
 import ExampleCounter from './alert';
+import TickerFeed from './ticker';
 import AlertDialogSlide from './date';
 import ResponsiveDialog from './print';
 import io from 'socket.io-client';
@@ -96,7 +97,7 @@ export default function App() {
   const isMobileQuery = useMediaQuery(theme.breakpoints.down('sm')); 
   const [isMobile, setIsMobile] = useState(false);
   const [totalActivities, setTotal] = useState(activities.rooms);
-
+  const [activityTicker, setTicker] = useState("-");
 
   const [checked, setChecked] = useState(() => {
     let checkedRooms = {};
@@ -183,6 +184,8 @@ export default function App() {
     const socket = io("https://kcsaws.co.uk/");
     socket.on('data_update', (data) => {
       console.log(data)
+      var tickerMessage = "Room " + data.room + " : " + data.message; 
+        setTicker(tickerMessage)
 
         if (data.type == "activity") {
 
@@ -363,10 +366,13 @@ export default function App() {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
+        <TickerFeed activityTicker={activityTicker}/>
+
         <Typography sx={{mb:"1rem"}} variant="h4" noWrap component="div">
           Update
         </Typography>
         <ExampleCounter warningMessages={warningMessages} warningRef={warningRef} setWarnings={setWarnings}/>
+
         <Divider style={{width:'100%'}} sx={{mt:"1rem", mb:"1rem"}}/>
           <Box component="section" sx={{ display: 'flex',  justifyContent: 'space-between' }}>
             <Typography variant="h4" >
