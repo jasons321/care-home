@@ -191,8 +191,19 @@ export default function App() {
   useEffect(() => {
     const socket = io("https://kcsaws.co.uk/");
     socket.on('data_update', (data) => {
-      var tickerMessage = "Room " + data.room + " : " + data.message; 
+      let validData = false;
+      let roomName = "Room " + data.room;
+
+      totalActivities.forEach((activity) => {
+        if (roomName == activity.name) {
+          validData = true;
+        }
+      })
+
+      if (validData) {
+        var tickerMessage = "Room " + data.room + " : " + data.message; 
         setTicker(tickerMessage)
+      }
 
         if (data.type == "activity") {
 
@@ -218,7 +229,8 @@ export default function App() {
           filterActivities(tempSelected);
 
         }
-        if (data.type == "warning") {
+
+        if (data.type == "warning" && validData) {
           var tempWarnings = warningRef.current; 
           var string = data.message + " Room " + data.room
           tempWarnings.push(string);
