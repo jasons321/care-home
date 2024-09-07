@@ -41,7 +41,6 @@ export default function ExampleCounter({warningMessages, warningRef, setWarnings
   }, [warningMessages]);
 
   return (
-    
     <Box sx={{bgcolor:"#ffffff", 
               maxHeight: "300px", 
               overflowY:"scroll", 

@@ -128,6 +128,7 @@ export default function App() {
     filterActivities([]);
     setChecked(updatedObject);
     checkedRef.current = updatedObject;
+    setActivity(false);
   }
 
   useEffect(() => {
@@ -263,6 +264,7 @@ export default function App() {
     filterActivities(totalActivities);
     setChecked(updatedObject);
     checkedRef.current = updatedObject;
+    setActivity(true);
 
   }
 
