@@ -20,8 +20,8 @@ export default function Login() {
     const navigate = useNavigate();
 
     const users = [
-        { username: "admin", password: "admin123", id:"1"},
-        { username: "user", password: "user123", id:"2"},
+        { username: "admin", password: "admin123", id: 0},
+        { username: "user", password: "user123", id: 1},
       ];
 
     const handleSubmit = (event) => {
@@ -33,7 +33,10 @@ export default function Login() {
 
         for (var user of users) {
             if (user.username == email && user.password == password) {
-                navigate("/dashboard");
+                navigate({
+                  pathname: '/dashboard',
+                  search: '?id='+ user.id
+                });
             }
             else {
               console.log("error")

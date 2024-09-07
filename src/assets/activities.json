@@ -2,6 +2,7 @@
     "rooms": [
       {
         "name": "Room 1",
+        "userId": 0,
         "type" : "Room",
         "camera" : "http://51.20.2.26:8000/",
         "activities": [
@@ -13,6 +14,7 @@
       {
         "name": "Room 2",
         "type" : "Room",
+        "userId": 0,
         "camera" : "http://51.20.2.26:8000/",
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
@@ -24,6 +26,7 @@
       {
         "name": "Room 3",
         "camera" : "",
+        "userId": 1,
         "type" : "Room",
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
@@ -35,6 +38,7 @@
       {
         "name": "Room 4",
         "type" : "Room",
+        "userId": 0,
         "camera" : "",
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
@@ -47,6 +51,7 @@
         "name": "Room 5",
         "type" : "Room",
         "camera" : "",
+        "userId": 1,
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "01:09", "activities": "Movement detected by bedside sensor" },
@@ -56,6 +61,7 @@
       {
         "name": "Room 6",
         "type" : "Room",
+        "userId": 1,
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "01:09", "activities": "Movement detected by bedside sensor" },
@@ -65,6 +71,7 @@
       {
         "name": "Room 7",
         "type" : "Room",
+        "userId": 1,
         "camera" : "http://51.20.2.26:8000/",
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
@@ -75,6 +82,7 @@
       {
         "name": "Room 8",
         "type" : "Room",
+        "userId": 1,
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "01:09", "activities": "Movement detected by bedside sensor" },
@@ -85,6 +93,7 @@
       {
         "name": "Room 9",
         "type" : "Room",
+        "userId": 1,
         "camera" : "http://51.20.2.26:8000/",
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
@@ -99,6 +108,7 @@
       {
         "name": "Room 10",
         "type" : "Room",
+        "userId": 1,
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
           { "date": "2024-07-01", "time": "01:09", "activities": "Movement detected by bedside sensor" },
@@ -113,6 +123,7 @@
       {
         "name": "Room 11",
         "type" : "Room",
+        "userId": 0,
         "camera" : "http://51.20.2.26:8000/",
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
@@ -127,6 +138,7 @@
       {
         "name": "Room 12",
         "camera": "",
+        "userId": 1,
         "type" : "Room",
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
@@ -138,6 +150,7 @@
       {
         "name": "Room 13",
         "camera": "",
+        "userId": 1,
         "type" : "Room",
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
@@ -153,6 +166,7 @@
       {
         "name": "Room 14",
         "camera": "",
+        "userId": 1,
         "type" : "Room",
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
@@ -164,6 +178,7 @@
       {
         "name": "Room 15",
         "camera": "",
+        "userId": 1,
         "type" : "Room",
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
@@ -175,6 +190,7 @@
       {
         "name": "Room 16",
         "camera": "",
+        "userId": 1,
         "type" : "Room",
         "activities": [
           { "date": "2024-06-30", "time": "22:49", "activities": "Movement detected by bedside sensor" },
@@ -185,11 +201,13 @@
       },
       {
         "name": "Reception",
+        "userId": 0,
         "camera": "http://51.20.2.26:8000/",
         "type" : "General"
       },
       {
         "name": "Lobby",
+        "userId": 0,
         "camera": "http://51.20.2.26:8000/",
         "type" : "General"
       }

@@ -17,14 +17,14 @@ export default function ExampleCounter({warningMessages, index, setWarnings, all
     return (
         <Box sx={{marginBottom:'20px'}}>
             <Alert severity="error" sx={{position:"relative"}}>
-                <AlertTitle sx={{position:"relative"}}>Error</AlertTitle>
+                <AlertTitle sx={{position:"relative"}}>Warning</AlertTitle>
                 {warningMessages}
                 <Button
                 onClick={() => {
                     closeBox();
                 }}
                 >
-                Click me
+                Close
                 </Button>
             </Alert>
         </Box>

@@ -7,7 +7,6 @@ import activities from './assets/activities.json';
 import logo from './assets/logo.png';
 import { useState, useEffect, useRef } from 'react';
 
-import CustomizedTimeline from './timeline';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -29,20 +28,19 @@ import HomeIcon from '@mui/icons-material/Home';
 import DoneAllIcon from '@mui/icons-material/DoneAll';
 import RemoveDoneIcon from '@mui/icons-material/RemoveDone';
 import Checkbox from '@mui/material/Checkbox';
-import Button from '@mui/material/Button';
-import ToggleButton from '@mui/material/ToggleButton';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+
 import useMediaQuery from '@mui/material/useMediaQuery';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import ListIcon from '@mui/icons-material/List';
 import CameraIndoorIcon from '@mui/icons-material/CameraIndoor';
 import HolidayVillageIcon from '@mui/icons-material/HolidayVillage';
 
 import ExampleCounter from './alert';
 import TickerFeed from './ticker';
-import AlertDialogSlide from './date';
-import ResponsiveDialog from './print';
+import ActivitiesDashboard from './activities';
+
+import { useSearchParams } from 'react-router-dom';
+
+
+
 import io from 'socket.io-client';
 
 const drawerWidth = 240;
@@ -93,11 +91,16 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function App() {
+
+  const [searchParams] = useSearchParams();
+  const [userId, setId] = useState(searchParams.get('id') || '');
+
   const theme = useTheme();
   const isMobileQuery = useMediaQuery(theme.breakpoints.down('sm')); 
   const [isMobile, setIsMobile] = useState(false);
-  const [totalActivities, setTotal] = useState(activities.rooms);
+  const [totalActivities, setTotal] = useState(activities.rooms.filter((room)=> room.userId == userId));
   const [activityTicker, setTicker] = useState("-");
+  const [showActivity, setActivity] = useState(false);
 
   const [checked, setChecked] = useState(() => {
     let checkedRooms = {};
@@ -163,27 +166,31 @@ export default function App() {
         filterActivities([...selectedActivities, room]);
       }
     });
-  };
 
-  const [alignment, setAlignment] = React.useState(null);
+    let roomChecked = false;
+    for (var checkedRoom in checkedRef.current) {
+      if (checkedRef.current[checkedRoom] == true) {
+        roomChecked = true;
+        setActivity(true);
+      }
+    }
+    if (!roomChecked) {
+      setActivity(false);
+    }
+  };
 
   const [selectedActivities, filterActivities] = useState(activities.rooms);
 
   const [open, setOpen] = React.useState(false);
-  
-  const [dateRange, setParentDates] = useState(['set', 'set']);
-  
+    
   const [parsedActivities, setParsed] = useState([]);
   
   const [warningMessages, setWarnings] = useState([]);
   let warningRef = useRef(warningMessages);
 
-
-
   useEffect(() => {
     const socket = io("https://kcsaws.co.uk/");
     socket.on('data_update', (data) => {
-      console.log(data)
       var tickerMessage = "Room " + data.room + " : " + data.message; 
         setTicker(tickerMessage)
 
@@ -202,16 +209,13 @@ export default function App() {
  
 
           let checked = checkedRef.current;
-          console.log(checked)
           totalActivities.forEach((activity) => {   
             if(checked[activity.name] == true) {
                 tempSelected.push(activity);
             }
           })
-          console.log(tempSelected)
 
           filterActivities(tempSelected);
-          console.log(selectedActivities)
 
         }
         if (data.type == "warning") {
@@ -249,21 +253,6 @@ export default function App() {
 
   }
 
-  const handleToggle = (event, newAlignment) => {
-    if (newAlignment !== null) {
-      setAlignment(newAlignment);
-    }
-  };
-
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const openMenu = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-  
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -369,79 +358,17 @@ export default function App() {
         <TickerFeed activityTicker={activityTicker}/>
 
         <Typography sx={{mb:"1rem"}} variant="h4" noWrap component="div">
-          Update
+          Warnings
         </Typography>
         <ExampleCounter warningMessages={warningMessages} warningRef={warningRef} setWarnings={setWarnings}/>
 
         <Divider style={{width:'100%'}} sx={{mt:"1rem", mb:"1rem"}}/>
-          <Box component="section" sx={{ display: 'flex',  justifyContent: 'space-between' }}>
-            <Typography variant="h4" >
-              Activity Log
-            </Typography>
-            {isMobile ?
-            <div>
-            <Button
-              id="basic-button"
-              aria-controls={openMenu ? 'basic-menu' : undefined}
-              aria-haspopup="true"
-              aria-expanded={openMenu ? 'true' : undefined}
-              onClick={handleClick}
-              startIcon={ <ListIcon/> }
-            >
-              Options
-            </Button>
-            <Menu
-              id="basic-menu"
-              anchorEl={anchorEl}
-              open={openMenu}
-              onClose={handleClose}
-              MenuListProps={{
-                'aria-labelledby': 'basic-button',
-              }}
-            >
-              <MenuItem ><AlertDialogSlide setParentDates={setParentDates}/></MenuItem>
-              <MenuItem ><ResponsiveDialog fullWidth parsed={parsedActivities}/> </MenuItem>
-              <MenuItem >              
-                <ToggleButtonGroup
-                  color="primary"
-                  value={alignment}
-                  exclusive
-                  fullWidth
-                  onChange={handleToggle}
-                  aria-label="Platform"
-                >
-                  <ToggleButton value="General">General</ToggleButton>
-                  <ToggleButton value="Rooms">Rooms</ToggleButton>
-                </ToggleButtonGroup>
-              </MenuItem>
-              <MenuItem>
-                <Button fullWidth  variant="contained" disableElevation>
-                  Reset
-                </Button>
-              </MenuItem>
-            </Menu>
-          </div>  
-            : <Box sx={{ display: 'flex', gap:"0.5rem", width:"fit-content"}} >
-              <AlertDialogSlide setParentDates={setParentDates}/>
-              <ResponsiveDialog parsed={parsedActivities}/>
-              <ToggleButtonGroup
-                color="primary"
-                value={alignment}
-                exclusive
-                onChange={handleToggle}
-                aria-label="Platform"
-              >
-                <ToggleButton value="General">General</ToggleButton>
-                <ToggleButton value="Rooms">Rooms</ToggleButton>
-              </ToggleButtonGroup>
-              <Button variant="contained" disableElevation>
-                Reset
-              </Button>
-            </Box>}
-          </Box>
-          {alignment === 'General' ? <CustomizedTimeline activities={totalActivities} date={dateRange} parsed={setParsed}/> : <CustomizedTimeline activities={selectedActivities} date={dateRange} parsed={setParsed}/>
-        }
 
+          {showActivity ? 
+                  <ActivitiesDashboard isMobile={isMobile} parsedActivities={parsedActivities} totalActivities={totalActivities} setParsed={setParsed} selectedActivities={selectedActivities}/>
+                  :
+                  <Box></Box>
+                }
         </Main>
     </Box>
   );
