@@ -43,7 +43,8 @@ import { useSearchParams } from 'react-router-dom';
 
 import io from 'socket.io-client';
 
-const drawerWidth = 240;
+const drawerWidth = 220;
+
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -96,7 +97,7 @@ export default function App() {
   const [userId, setId] = useState(searchParams.get('id') || '');
 
   const theme = useTheme();
-  const isMobileQuery = useMediaQuery(theme.breakpoints.down('sm')); 
+  const isMobileQuery = useMediaQuery(theme.breakpoints.down('md')); 
   const [isMobile, setIsMobile] = useState(false);
   const [totalActivities, setTotal] = useState(activities.rooms.filter((room)=> room.userId == userId));
   const [activityTicker, setTicker] = useState("-");
@@ -365,16 +366,13 @@ export default function App() {
             </ListItem>
         </List>
       </Drawer>
-      <Main open={open}>
+      <Main sx={{backgroundColor:"#fafbfd !important", height:"100vh", overflowY:"scroll"}} open={open}>
         <DrawerHeader />
-        <TickerFeed activityTicker={activityTicker}/>
+        <TickerFeed  activityTicker={activityTicker}/>
 
-        <Typography sx={{mb:"1rem"}} variant="h4" noWrap component="div">
-          Warnings
-        </Typography>
+
         <ExampleCounter warningMessages={warningMessages} warningRef={warningRef} setWarnings={setWarnings}/>
 
-        <Divider style={{width:'100%'}} sx={{mt:"1rem", mb:"1rem"}}/>
 
           {showActivity ? 
                   <ActivitiesDashboard isMobile={isMobile} parsedActivities={parsedActivities} totalActivities={totalActivities} setParsed={setParsed} selectedActivities={selectedActivities}/>

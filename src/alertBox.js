@@ -15,8 +15,8 @@ export default function ExampleCounter({warningMessages, index, setWarnings, all
     }
 
     return (
-        <Box sx={{marginBottom:'20px'}}>
-            <Alert severity="error" sx={{position:"relative"}}>
+        <Box sx={{marginTop:'5px', marginBottom:'20px'  }}>
+            <Alert severity="error" sx={{borderRadius: '16px', position:"relative"}}>
                 <AlertTitle sx={{position:"relative"}}>Warning</AlertTitle>
                 {warningMessages}
                 <Button

@@ -112,7 +112,7 @@ export default function CustomizedTimeline({activities, date, parsed}) {
   }, [date, activities]); // Only re-run the effect if props.someProp changes
 
   return (
-    <Timeline sx={{bgcolor:"#f6f7f7", maxHeight: "300px", overflowY:"scroll"}}>
+    <Timeline sx={{pl:'50px', pr:'50px', maxHeight: "300px", overflowY:"scroll"}}>
       {allDates.map(function(data, index) {
           return (
             <Box key={index}>
@@ -122,7 +122,7 @@ export default function CustomizedTimeline({activities, date, parsed}) {
                 return (
                   <TimelineItem key={index}>
                   <TimelineOppositeContent
-                    sx={{ m: 'auto 0', flex:"0.1" }}
+                    sx={{ m: 'auto 0', flex:"0.1",  borderRadius: '10px' }}
                     align="right"
                     variant="body2"
                     color="text.secondary"

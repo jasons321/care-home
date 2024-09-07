@@ -5,6 +5,9 @@ import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import MusicOffIcon from '@mui/icons-material/MusicOff';
 import IconButton from '@mui/material/IconButton';
 import sound from './assets/alert-sound-87478.mp3'
+import Typography from '@mui/material/Typography';
+import { borders } from '@mui/system';
+
 
 export default function ExampleCounter({warningMessages, warningRef, setWarnings}) {
   const [isMuted, setIsMuted] = useState(true);
@@ -39,17 +42,30 @@ export default function ExampleCounter({warningMessages, warningRef, setWarnings
 
   return (
     
-    <Box sx={{bgcolor:"#f6f7f7", maxHeight: "300px", overflowY:"scroll"}}>
+    <Box sx={{bgcolor:"#ffffff", 
+              maxHeight: "300px", 
+              overflowY:"scroll", 
+              padding: "20px",  
+              mt:"1.5rem", 
+              mb:"1.5rem",
+              borderRadius: '16px',  
+              border: 1,
+              borderColor: 'grey.200',
+              boxShadow: 3,
+              boxSizing:"border-box"}}>
           <audio src={sound} />
-          <IconButton 
-            isMuted={isMuted}
-            onClick={() => {
-                toggleMuted();
-            }}
-            aria-label="delete" 
-            size="medium" >
-                {isMuted ? <MusicOffIcon fontSize="medium"/> : < MusicNoteIcon fontSize="medium"/>}
-        </IconButton>
+          <Typography sx={{mb:"200px", display:"inline", marginBottom:"200px"}} variant="h5"  component="div">
+            Warnings
+            <IconButton 
+              isMuted={isMuted}
+              onClick={() => {
+                  toggleMuted();
+              }}
+              aria-label="delete" 
+              size="medium" >
+                  {isMuted ? <MusicOffIcon fontSize="medium"/> : < MusicNoteIcon fontSize="medium"/>}
+            </IconButton>
+          </Typography>
         {warningMessages.map((message, index) => (
             <AlertBox warningMessages={message} index={index} setWarnings={setWarnings} allMessages={warningMessages} warningRef={warningRef}/>
         ))}

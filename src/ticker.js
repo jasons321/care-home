@@ -35,20 +35,37 @@ export default function TickerFeed({activityTicker}) {
   return (
     <Stack
         direction="row"
-        divider={<Divider orientation="vertical" flexItem />}
         spacing={2}
-        height="auto"
+        maxHeight="80px"
         alignItems="center"
-        backgroundColor="#e3f2fd"
+        backgroundColor="#ffffff"
+        
+        sx={{pl:'20px', 
+            pr:'20px',
+            pt:'10px',
+            pb:'10px',
+            borderRadius:'16px',                
+            border: 1,
+            borderColor: 'grey.200',
+            boxShadow: 1,  
+            boxShadow: 3,   
+            mt:"1.5rem", 
+            mb:"1.5rem"
+        }}
     >
-
         <Box
                 display="flex" 
-                flexDirection="row" 
+                flexDirection="row"
+                alignItems={"center"}
+                backgroundColor="#1976d2" 
                 gap="10px"
+                color="white"
+                padding="10px"
+                alignSelf={'stretch'}
+                borderRadius={'16px'}
         >
             <AnnouncementIcon/>
-            <Typography>Incoming Activity</Typography>
+            <Typography >Incoming Activity</Typography>
         </Box>
         <Box flex="1" paddingTop="30px">
             <Ticker  offset="run-in" speed="20">
