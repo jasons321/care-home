@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/care-home/static/css/main.63e85c64.css",
-    "main.js": "/care-home/static/js/main.96d0b3c2.js",
+    "main.js": "/care-home/static/js/main.4359219f.js",
     "static/js/453.d7172a80.chunk.js": "/care-home/static/js/453.d7172a80.chunk.js",
     "static/media/logo.png": "/care-home/static/media/logo.668c1a36a192b3e03e01.png",
     "static/media/alert-sound-87478.mp3": "/care-home/static/media/alert-sound-87478.b794de8f55ab35bb62fa.mp3",
     "index.html": "/care-home/index.html",
     "main.63e85c64.css.map": "/care-home/static/css/main.63e85c64.css.map",
-    "main.96d0b3c2.js.map": "/care-home/static/js/main.96d0b3c2.js.map",
+    "main.4359219f.js.map": "/care-home/static/js/main.4359219f.js.map",
     "453.d7172a80.chunk.js.map": "/care-home/static/js/453.d7172a80.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.63e85c64.css",
-    "static/js/main.96d0b3c2.js"
+    "static/js/main.4359219f.js"
   ]
 }
